@@ -1,12 +1,15 @@
 class Urigami < Formula
-  desc "Urigami is a command-line utility for managing default applications on macOS"
-  homepage ""
-  url "https://github.com/noahkamara/urigami/archive/v0.0.1.tar.gz"
-  sha256 "409ea55f9c2bcb496053cf67cf16484990015269"
-  license "MIT License"
-  version "0.0.1"
+  desc "a command-line utility for managing default applications on macOS"
+  homepage "https://github.com/NoahKamara/Urigami"
+  url "https://github.com/NoahKamara/Urigami/releases/download/v0.1.0/v0.1.0.tar.gz"
+  sha256 "779a7f7ba7d1f555debcbffb4583cbf099a978d67c10ed788e6030d7343e36a2"
+  version "v0.1.0"
 
   def install
     bin.install "urigami"
+  end
+
+  test do
+    system "#{bin}/urigami", "--version"
   end
 end
