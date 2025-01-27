@@ -6,19 +6,14 @@ class #{FORMULA_CLASS_NAME} < Formula
   version "#{VERSION}"
 
   def install
-    bin.install "#{SCRIPT_NAME}"
-    
+    # Build
+    system "swift", "build", "-c", "release", "--disable-sandbox", "--arch", "arm64", "--arch", "x86_64"
+
+    # Install
+    bin.install ".build/apple/Products/Release/#{SCRIPT_NAME}"
+
     # Generate and install completions
-    bash_output = Utils.safe_popen_read("#{bin}/#{SCRIPT_NAME}", "--generate-completion-script", "bash")
-    (bash_completion/"#{SCRIPT_NAME}").write bash_output
-
-    zsh_output = Utils.safe_popen_read("#{bin}/#{SCRIPT_NAME}", "--generate-completion-script", "zsh")
-    (zsh_completion/"#{SCRIPT_NAME}").write zsh_output
-
-    fish_output = Utils.safe_popen_read("#{bin}/#{SCRIPT_NAME}", "--generate-completion-script", "fish")
-    (fish_completion/"#{SCRIPT_NAME}.fish").write fish_output
-
-    bin.install "#{SCRIPT_NAME}"
+    generate_completions_from_executable(bin/"#{SCRIPT_NAME}", "--generate-completion-script")
   end
 
   test do
