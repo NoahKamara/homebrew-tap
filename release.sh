@@ -12,7 +12,13 @@ source "./Templates/$FORMULA.template" || exit 1
 SHA256=$(curl -L "$URL" | shasum -a 256 | cut -d ' ' -f 1)
 
 # Read the template
-template=$(cat ./Templates/Template.rb)
+if [ -z "$TEMPLATE" ]; then
+  TEMPLATE="./Templates/Template.rb"
+else
+  TEMPLATE="Templates/$TEMPLATE.rb"
+fi
+
+TEMPLATE=$(cat "$TEMPLATE")
 
 echo "FORMULA_CLASS_NAME: " $FORMULA_CLASS_NAME
 echo "DESCRIPTION: " $DESCRIPTION
@@ -23,7 +29,7 @@ echo "VERSION: " $VERSION
 echo "SCRIPT_NAME: " $SCRIPT_NAME
 
 # Replace placeholders using sed
-template=$(echo "$template" | sed \
+output=$(echo "$TEMPLATE" | sed \
   -e "s|#{FORMULA_CLASS_NAME}|$FORMULA_CLASS_NAME|g" \
   -e "s|#{DESCRIPTION}|$DESCRIPTION|g" \
   -e "s|#{HOMEPAGE}|$HOMEPAGE|g" \
@@ -33,4 +39,4 @@ template=$(echo "$template" | sed \
   -e "s|#{SCRIPT_NAME}|$SCRIPT_NAME|g")
 
 # Output the resolved template
-echo "$template" >"Formula/${FORMULA_CLASS_NAME}.rb"
+echo "$output" >"Formula/${FORMULA_CLASS_NAME}.rb"

@@ -4,6 +4,8 @@ if [ -z "$VERSION" ]; then
   read -p "VERSION is not set. Please enter a version number: " VERSION
 fi
 
+TEMPLATE="SwiftArgumentParser"
+
 FORMULA_CLASS_NAME="Urigami"
 DESCRIPTION="a command-line utility for managing default applications on macOS"
 HOMEPAGE="https://github.com/NoahKamara/Urigami"
