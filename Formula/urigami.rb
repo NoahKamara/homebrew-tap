@@ -1,9 +1,9 @@
 class Urigami < Formula
-  desc "a command-line utility for managing default applications on macOS"
+  desc "command-line utility for managing default applications on macOS"
   homepage "https://github.com/NoahKamara/Urigami"
-  url "https://github.com/NoahKamara/Urigami/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "11351401ac9d5f3b9c743f7d71e3dd0f040f4719e1d6a303ededb61eeae8a395"
-  version "v0.1.1"
+  url "https://github.com/NoahKamara/Urigami/archive/refs/tags/v0.1.2.tar.gz"
+  sha256 "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed"
+  version "v0.1.2"
 
   def install
     # Build
@@ -20,3 +20,4 @@ class Urigami < Formula
     system "#{bin}/urigami", "--version"
   end
 end
+
