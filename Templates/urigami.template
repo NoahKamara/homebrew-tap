@@ -7,7 +7,7 @@ fi
 TEMPLATE="SwiftArgumentParser"
 
 FORMULA_CLASS_NAME="Urigami"
-DESCRIPTION="a command-line utility for managing default applications on macOS"
+DESCRIPTION="command-line utility for managing default applications on macOS"
 HOMEPAGE="https://github.com/NoahKamara/Urigami"
 
 URL="https://github.com/NoahKamara/Urigami/archive/refs/tags/${VERSION}.tar.gz"

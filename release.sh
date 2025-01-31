@@ -13,9 +13,9 @@ SHA256=$(curl -L "$URL" | shasum -a 256 | cut -d ' ' -f 1)
 
 # Read the template
 if [ -z "$TEMPLATE" ]; then
-  TEMPLATE="./Templates/Template.rb"
+  TEMPLATE="./Templates/Template.template.rb"
 else
-  TEMPLATE="Templates/$TEMPLATE.rb"
+  TEMPLATE="Templates/$TEMPLATE.template.rb"
 fi
 
 TEMPLATE=$(cat "$TEMPLATE")
